@@ -231,5 +231,3 @@ function main() {
         button.addEventListener('click', () => solveTheorySubModule());
     }
 }
-
-export { main };

@@ -5,18 +5,15 @@
 // @description  An extension to automate solution of HTMLAcademy practices and theories.
 // @author       quyxishi
 // @match        *://up.htmlacademy.ru/**/module/*
+// @require      https://raw.githubusercontent.com/quyxishi/htmlautoma/refs/heads/main/src/main.js
 // @grant        none
 // ==/UserScript==
 
 (async () => {
     'use strict';
     try {
-        (
-            await import(
-                'https://raw.githubusercontent.com/quyxishi/htmlautoma/refs/heads/main/src/main.js'
-            )
-        ).main();
+        main();
     } catch (e) {
-        console.error('Initialization error:', e);
+        console.error('HTMLAutoma runtime-error due ', e);
     }
 })();
