@@ -9,14 +9,14 @@
 // ==/UserScript==
 
 (async () => {
-	'use strict';
-	try {
-		(
-			await import(
-				'https://raw.githubusercontent.com/quyxishi/htmlautoma/refs/heads/main/src/main.js'
-			)
-		).main();
-	} catch (e) {
-		console.error('Initialization error:', e);
-	}
+    'use strict';
+    try {
+        (
+            await import(
+                'https://raw.githubusercontent.com/quyxishi/htmlautoma/refs/heads/main/src/main.js'
+            )
+        ).main();
+    } catch (e) {
+        console.error('Initialization error:', e);
+    }
 })();
