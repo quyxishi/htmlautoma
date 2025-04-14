@@ -8,11 +8,13 @@ function solvePracticalSubModule() {
 
     solveButton.disabled = true;
     solveButton.classList.add('magic_hovered');
-    solveText.textContent = 'Решаем..';
+    solveText.textContent = '0%';
 
     const unsolvedTasks = document.querySelectorAll(
         'div.chapter-tasks__item:not(.chapter-tasks__item--active) a.chapter-tasks__link'
     );
+
+    var solvedCounter = 0;
 
     const tasksPromises = Array.from(unsolvedTasks).map((taskItem, index) => {
         return new Promise((resolve) => {
@@ -96,13 +98,19 @@ function solvePracticalSubModule() {
                         console.error('Error at fetching:', error)
                     )
                     .finally(() => {
+                        solvedCounter++;
+                        solveText.textContent = `${parseFloat(
+                            (solvedCounter / unsolvedTasks.length) * 100
+                        ).toFixed(0)}%`;
+
                         taskItem.parentElement.classList.add(
                             'chapter-tasks__item--active'
                         );
                         taskItem.style.backgroundColor = '';
+
                         resolve();
                     });
-            }, 500 * index);
+            }, 250 * index);
         });
     });
 
@@ -120,11 +128,13 @@ function solveTheorySubModule() {
 
     solveButton.disabled = true;
     solveButton.classList.add('magic_hovered');
-    solveText.textContent = 'Решаем..';
+    solveText.textContent = '0%';
 
     const unsolvedTasks = document.querySelectorAll(
         'div.tree__item:not(.tree__item--done) div.tree__item-wrap a.tree__link'
     );
+
+    var solvedCounter = 0;
 
     const tasksPromises = Array.from(unsolvedTasks).map((taskItem, index) => {
         return new Promise((resolve) => {
@@ -169,12 +179,18 @@ function solveTheorySubModule() {
                         console.error('Error at submitting:', error)
                     )
                     .finally(() => {
+                        solvedCounter++;
+                        solveText.textContent = `${parseFloat(
+                            (solvedCounter / unsolvedTasks.length) * 100
+                        ).toFixed(0)}%`;
+
                         taskItem.parentElement.parentElement.classList.add(
                             'tree__item--done'
                         );
+
                         resolve();
                     });
-            }, 500 * index);
+            }, 250 * index);
         });
     });
 
